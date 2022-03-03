@@ -10,17 +10,16 @@ class HomeActivityV1 {
 
   private Profile profile;
 
-  public HomeActivityV1( ) {
+  public HomeActivityV1() {
   }
 
   void onCreate() {
-
 
   }
 
   /**
    * Login the user.
-   *//**/
+   */
   void login() {
     NetworkClient networkClient = new NetworkClient();
     AuthService authService = new AuthServiceImpl(networkClient);
@@ -37,4 +36,16 @@ class HomeActivityV1 {
       rideRequestService.requestRide();
     }
   }
+
+
+  /**
+   * log the user.
+   */
+  void logout() {
+    NetworkClient networkClient = new NetworkClient();
+    AuthService authService = new AuthServiceImpl(networkClient);
+    authService.logout("eric.liu@uber.com");
+    profile = null;
+  }
+
 }

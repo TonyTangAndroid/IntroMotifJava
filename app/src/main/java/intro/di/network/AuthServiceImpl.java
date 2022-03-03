@@ -16,4 +16,9 @@ public class AuthServiceImpl implements AuthService {
         networkClient.newCall("www.example.com/login?email=$email&password=$password");
         return new Profile(UUID.randomUUID(), "xxxx-xxxx-xxxx");
     }
+
+    @Override
+    public void logout(String email) {
+        System.out.println("logged out");
+    }
 }
