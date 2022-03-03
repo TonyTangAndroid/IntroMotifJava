@@ -9,10 +9,9 @@ import motif.Expose;
 import motif.Scope;
 
 @Scope
-interface RootScope {
+interface RootScope extends LoggedInScope.Builder {
     AuthService authService();
 
-    LoggedInScope loggedInScope(Profile profile);
 
     @motif.Objects
     abstract class Objects {
