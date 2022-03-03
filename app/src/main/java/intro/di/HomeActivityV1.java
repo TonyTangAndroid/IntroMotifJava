@@ -1,5 +1,6 @@
 package intro.di;
 
+import androidx.annotation.NonNull;
 import intro.di.network.AuthService;
 import intro.di.network.AuthServiceImpl;
 import intro.di.network.NetworkClient;
@@ -9,6 +10,10 @@ import intro.di.network.RideRequestServiceImpl;
 class HomeActivityV1 {
 
   private Profile profile;
+
+  private NetworkClient networkClient;
+  private AuthService authService;
+  private RideRequestService rideRequestService;
 
   public HomeActivityV1() {
   }
@@ -21,9 +26,23 @@ class HomeActivityV1 {
    * Login the user.
    */
   void login() {
-    NetworkClient networkClient = new NetworkClient();
-    AuthService authService = new AuthServiceImpl(networkClient);
+    AuthService authService = createAuthServiceIfNeeded();
     profile = authService.login("eric.liu@uber.com", "xxxx");
+  }
+
+  private AuthService createAuthServiceIfNeeded() {
+    if (authService == null) {
+      NetworkClient networkClient = createNetworkClientIfNeeded();
+      authService = new AuthServiceImpl(networkClient);
+    }
+    return authService;
+  }
+
+  private NetworkClient createNetworkClientIfNeeded() {
+    if (networkClient == null) {
+      networkClient = new NetworkClient();
+    }
+    return networkClient;
   }
 
   /**
@@ -31,10 +50,18 @@ class HomeActivityV1 {
    */
   void requestRide() {
     if (profile != null) {
-      NetworkClient networkClient = new NetworkClient();
-      RideRequestService rideRequestService = new RideRequestServiceImpl(profile, networkClient);
+      RideRequestService rideRequestService = createRideRequestServiceIfNeeded();
       rideRequestService.requestRide();
     }
+  }
+
+  @NonNull
+  private RideRequestService createRideRequestServiceIfNeeded() {
+    if (rideRequestService == null) {
+      NetworkClient networkClient = createNetworkClientIfNeeded();
+      rideRequestService = new RideRequestServiceImpl(profile, networkClient);
+    }
+    return rideRequestService;
   }
 
 
@@ -42,8 +69,7 @@ class HomeActivityV1 {
    * log the user.
    */
   void logout() {
-    NetworkClient networkClient = new NetworkClient();
-    AuthService authService = new AuthServiceImpl(networkClient);
+    AuthService authService = createAuthServiceIfNeeded();
     authService.logout("eric.liu@uber.com");
     profile = null;
   }
