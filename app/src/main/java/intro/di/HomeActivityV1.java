@@ -12,6 +12,7 @@ class HomeActivityV1 {
 
   private Profile profile;
   private RootComponent rootComponent;
+  private RootScope rootScope;
 
   public HomeActivityV1() {
   }
@@ -24,7 +25,7 @@ class HomeActivityV1 {
    * Login the user.
    */
   void login() {
-    RootScope rootScope = new RootScopeImpl();
+    rootScope = new RootScopeImpl();
     AuthService authService1 = rootScope.authService();
     profile = authService1.login("eric.liu@uber.com", "xxxx");
   }
@@ -35,8 +36,8 @@ class HomeActivityV1 {
    */
   void requestRide() {
     if (profile != null) {
-      RideRequestService rideRequestService = rootComponent.getRequestService(profile);
-      rideRequestService.requestRide();
+      RideRequestService rideRequestService1 = rootScope.loggedInScope(profile).rideRequestService();
+      rideRequestService1.requestRide();
     }
   }
 
