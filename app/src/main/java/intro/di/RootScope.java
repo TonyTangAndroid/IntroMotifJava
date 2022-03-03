@@ -21,9 +21,11 @@ interface RootScope extends LoggedInScope.Builder {
     }
 
     //1   //factory method
-    AuthService AuthService(NetworkClient networkClient) {
-      return new AuthServiceImpl(networkClient);
+    AuthService AuthService(NetworkClient networkClient, String serverUl) {
+      return new AuthServiceImpl(serverUl, networkClient);
     }
 
   }
+
+
 }

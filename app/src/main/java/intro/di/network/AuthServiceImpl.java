@@ -5,9 +5,11 @@ import java.util.UUID;
 import intro.di.Profile;
 
 public class AuthServiceImpl implements AuthService {
+    private final String serverUl;
     private final NetworkClient networkClient;
 
-    public AuthServiceImpl(NetworkClient networkClient) {
+    public AuthServiceImpl(String serverUl, NetworkClient networkClient) {
+        this.serverUl = serverUl;
         this.networkClient = networkClient;
     }
 

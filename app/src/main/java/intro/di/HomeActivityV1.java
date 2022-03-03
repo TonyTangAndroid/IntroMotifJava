@@ -2,6 +2,7 @@ package intro.di;
 
 import android.provider.DocumentsContract.Root;
 import androidx.annotation.NonNull;
+import intro.di.RootScopeImpl.Dependencies;
 import intro.di.network.AuthService;
 import intro.di.network.AuthServiceImpl;
 import intro.di.network.NetworkClient;
@@ -11,21 +12,24 @@ import intro.di.network.RideRequestServiceImpl;
 class HomeActivityV1 {
 
   private Profile profile;
-  private RootComponent rootComponent;
   private RootScope rootScope;
 
   public HomeActivityV1() {
   }
 
   void onCreate() {
-    rootComponent = new RootComponent();
   }
 
   /**
    * Login the user.
    */
   void login() {
-    rootScope = new RootScopeImpl();
+    rootScope = new RootScopeImpl(new Dependencies() {
+      @Override
+      public String string() {
+        return "www.uber.com";
+      }
+    });
     AuthService authService1 = rootScope.authService();
     profile = authService1.login("eric.liu@uber.com", "xxxx");
   }
@@ -45,7 +49,7 @@ class HomeActivityV1 {
    * log the user.
    */
   void logout() {
-    AuthService authService = rootComponent.createAuthService();
+    AuthService authService = rootScope.authService();
     authService.logout("eric.liu@uber.com");
     profile = null;
   }
