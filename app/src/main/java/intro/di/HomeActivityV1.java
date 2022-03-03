@@ -3,6 +3,7 @@ package intro.di;
 import intro.di.RootScope.ExternalDependencies;
 import intro.di.network.AuthService;
 import intro.di.network.RideRequestService;
+import motif.ScopeFactory;
 
 class HomeActivityV1 {
 
@@ -19,13 +20,8 @@ class HomeActivityV1 {
    * Login the user.
    */
   void login() {
-    rootScope = new RootScopeImpl(new ExternalDependencies() {
-      @Override
-      public String serverUrl() {
-        return "www.uber.com";
-      }
-    });
-    AuthService authService1 = rootScope.authService();
+    this.rootScope = ScopeFactory.create(RootScope.class, () -> "www.uber.com");
+    AuthService authService1 = this.rootScope.authService();
     profile = authService1.login("eric.liu@uber.com", "xxxx");
   }
 
