@@ -6,12 +6,20 @@ import intro.di.network.RideRequestServiceImpl;
 
 @motif.Scope
 interface LoggedInScope {
-    RideRequestService rideRequestService();
 
-    @motif.Objects
-    abstract class Objects {
-       public RideRequestService rideRequestService(Profile profile , NetworkClient networkClient )  {
-            return new  RideRequestServiceImpl(profile, networkClient);
-        }
+  RideRequestService rideRequestService();
+
+
+  interface Builder {
+
+    LoggedInScope loggedInScope(Profile profile);
+  }
+
+  @motif.Objects
+  abstract class Objects {
+
+    public RideRequestService rideRequestService(Profile profile, NetworkClient networkClient) {
+      return new RideRequestServiceImpl(profile, networkClient);
     }
+  }
 }
