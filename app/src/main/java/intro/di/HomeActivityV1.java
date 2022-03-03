@@ -1,48 +1,26 @@
 package intro.di;
 
-import androidx.annotation.NonNull;
 import intro.di.network.AuthService;
-import intro.di.network.AuthServiceImpl;
-import intro.di.network.NetworkClient;
 import intro.di.network.RideRequestService;
-import intro.di.network.RideRequestServiceImpl;
 
 class HomeActivityV1 {
 
   private Profile profile;
-
-  private NetworkClient networkClient;
-  private AuthService authService;
-  private RideRequestService rideRequestService;
+  private RootComponent rootComponent;
 
   public HomeActivityV1() {
   }
 
   void onCreate() {
-
+    rootComponent = new RootComponent();
   }
 
   /**
    * Login the user.
    */
   void login() {
-    AuthService authService = createAuthServiceIfNeeded();
+    AuthService authService = rootComponent.authService();
     profile = authService.login("eric.liu@uber.com", "xxxx");
-  }
-
-  private AuthService createAuthServiceIfNeeded() {
-    if (authService == null) {
-      NetworkClient networkClient = createNetworkClientIfNeeded();
-      authService = new AuthServiceImpl(networkClient);
-    }
-    return authService;
-  }
-
-  private NetworkClient createNetworkClientIfNeeded() {
-    if (networkClient == null) {
-      networkClient = new NetworkClient();
-    }
-    return networkClient;
   }
 
   /**
@@ -50,26 +28,16 @@ class HomeActivityV1 {
    */
   void requestRide() {
     if (profile != null) {
-      RideRequestService rideRequestService = createRideRequestServiceIfNeeded();
+      RideRequestService rideRequestService = rootComponent.rideRequestService(profile);
       rideRequestService.requestRide();
     }
   }
-
-  @NonNull
-  private RideRequestService createRideRequestServiceIfNeeded() {
-    if (rideRequestService == null) {
-      NetworkClient networkClient = createNetworkClientIfNeeded();
-      rideRequestService = new RideRequestServiceImpl(profile, networkClient);
-    }
-    return rideRequestService;
-  }
-
 
   /**
    * log the user.
    */
   void logout() {
-    AuthService authService = createAuthServiceIfNeeded();
+    AuthService authService = rootComponent.authService();
     authService.logout("eric.liu@uber.com");
     profile = null;
   }
