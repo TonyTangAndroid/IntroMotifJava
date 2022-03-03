@@ -4,8 +4,7 @@ class HomeActivity {
     private Profile profile;
     private RootScope rootScope;
 
-    public HomeActivity(Profile profile) {
-        this.profile = profile;
+    public HomeActivity() {
     }
 
     void onCreate() {
