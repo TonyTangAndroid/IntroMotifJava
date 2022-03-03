@@ -11,6 +11,7 @@ class HomeActivityV1 {
 
   private Profile profile;
   private NetworkClient networkClient;
+  private AuthService authService;
 
   public HomeActivityV1() {
   }
@@ -23,8 +24,7 @@ class HomeActivityV1 {
    * Login the user.
    */
   void login() {
-    NetworkClient networkClient = createNetworkClient();
-    AuthService authService = new AuthServiceImpl(networkClient);
+    AuthService authService = createAuthService();
     profile = authService.login("eric.liu@uber.com", "xxxx");
   }
 
@@ -52,10 +52,18 @@ class HomeActivityV1 {
    * log the user.
    */
   void logout() {
-    NetworkClient networkClient = createNetworkClient();
-    AuthService authService = new AuthServiceImpl(networkClient);
+    AuthService authService = createAuthService();
     authService.logout("eric.liu@uber.com");
     profile = null;
+  }
+
+  @NonNull
+  private AuthService createAuthService() {
+    if (authService==null){
+      NetworkClient networkClient = createNetworkClient();
+      authService = new AuthServiceImpl(networkClient);
+    }
+    return authService;
   }
 
 }
