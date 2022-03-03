@@ -6,21 +6,20 @@ import intro.di.network.RideRequestService;
 class HomeActivityV1 {
 
   private Profile profile;
-  private RootComponent rootComponent;
+  private RootScope rootScope;
 
   public HomeActivityV1() {
   }
 
   void onCreate() {
-    rootComponent = new RootComponent();
+    rootScope = new RootScopeImpl();
   }
 
   /**
    * Login the user.
    */
   void login() {
-    AuthService authService = rootComponent.authService();
-    profile = authService.login("eric.liu@uber.com", "xxxx");
+    profile = rootScope.authService().login("eric.liu@uber.com", "xxxx");
   }
 
   /**
@@ -28,17 +27,15 @@ class HomeActivityV1 {
    */
   void requestRide() {
     if (profile != null) {
-      RideRequestService rideRequestService = rootComponent.rideRequestService(profile);
-      rideRequestService.requestRide();
+      rootScope.loggedInScope(profile).rideRequestService().requestRide();
     }
   }
 
   /**
-   * log the user.
+   * log out the user.
    */
   void logout() {
-    AuthService authService = rootComponent.authService();
-    authService.logout("eric.liu@uber.com");
+    rootScope.authService().logout("eric.liu@uber.com");
     profile = null;
   }
 
