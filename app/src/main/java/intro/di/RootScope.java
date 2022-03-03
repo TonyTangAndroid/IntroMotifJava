@@ -10,21 +10,19 @@ interface RootScope {
   //Access method. 0
   AuthService authService();
 
-  //factory method
 
   @motif.Objects
   abstract class Objects {
 
-    //2. NetworkClient
+    //2. NetworkClient   //factory method
     NetworkClient createNetworkClient() {
       return new NetworkClient();
     }
 
-    //1
+    //1   //factory method
     AuthService AuthService(NetworkClient networkClient) {
       return new AuthServiceImpl(networkClient);
     }
-
 
   }
 }
