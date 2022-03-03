@@ -1,13 +1,8 @@
 package intro.di;
 
-import android.provider.DocumentsContract.Root;
-import androidx.annotation.NonNull;
-import intro.di.RootScopeImpl.Dependencies;
+import intro.di.RootScope.ExternalDependencies;
 import intro.di.network.AuthService;
-import intro.di.network.AuthServiceImpl;
-import intro.di.network.NetworkClient;
 import intro.di.network.RideRequestService;
-import intro.di.network.RideRequestServiceImpl;
 
 class HomeActivityV1 {
 
@@ -24,9 +19,9 @@ class HomeActivityV1 {
    * Login the user.
    */
   void login() {
-    rootScope = new RootScopeImpl(new Dependencies() {
+    rootScope = new RootScopeImpl(new ExternalDependencies() {
       @Override
-      public String string() {
+      public String serverUrl() {
         return "www.uber.com";
       }
     });
