@@ -1,11 +1,11 @@
 package intro.di;
 
-class HomeActivityV2 {
+class HomeActivityV1 {
 
   private Profile profile;
   private RootComponent rootComponent;
 
-  public HomeActivityV2( ) {
+  public HomeActivityV1( ) {
    }
 
   void onCreate() {
