@@ -24,14 +24,7 @@ class HomeActivityV1 {
    * Login the user.
    */
   void login() {
-    AuthService authService = rootComponent.createAuthService();
-    RootScope rootScope = new RootScopeImpl(new RootScopeImpl.Dependencies() {
-      @Override
-      public AuthService authService() {
-        return authService;
-      }
-    });
-
+    RootScope rootScope = new RootScopeImpl();
     AuthService authService1 = rootScope.authService();
     profile = authService1.login("eric.liu@uber.com", "xxxx");
   }
