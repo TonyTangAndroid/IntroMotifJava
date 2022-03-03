@@ -1,5 +1,6 @@
 package intro.di;
 
+import android.provider.DocumentsContract.Root;
 import androidx.annotation.NonNull;
 import intro.di.network.AuthService;
 import intro.di.network.AuthServiceImpl;
@@ -24,7 +25,15 @@ class HomeActivityV1 {
    */
   void login() {
     AuthService authService = rootComponent.createAuthService();
-    profile = authService.login("eric.liu@uber.com", "xxxx");
+    RootScope rootScope = new RootScopeImpl(new RootScopeImpl.Dependencies() {
+      @Override
+      public AuthService authService() {
+        return authService;
+      }
+    });
+
+    AuthService authService1 = rootScope.authService();
+    profile = authService1.login("eric.liu@uber.com", "xxxx");
   }
 
 
