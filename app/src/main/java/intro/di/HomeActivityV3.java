@@ -1,10 +1,10 @@
 package intro.di;
 
-class HomeActivity {
+class HomeActivityV3 {
     private Profile profile;
     private RootScope rootScope;
 
-    public HomeActivity() {
+    public HomeActivityV3() {
     }
 
     void onCreate() {
