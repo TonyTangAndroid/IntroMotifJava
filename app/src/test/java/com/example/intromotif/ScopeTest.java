@@ -5,10 +5,8 @@ import com.google.common.truth.Truth;
 import org.junit.Test;
 
 import intro.di.Profile;
-import intro.di.network.NetworkClient;
-import intro.di.network.RootScope;
-import intro.di.network.RootScopeImpl;
-import intro.di.network.RideRequestService;
+import intro.di.network.RideScope;
+import intro.di.network.RideScopeImpl;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -18,12 +16,12 @@ import intro.di.network.RideRequestService;
 public class ScopeTest {
     @Test
     public void addition_isCorrect() {
-        RootScope rootScope = new RootScopeImpl(new RootScopeImpl.Dependencies() {
+        RideScope rideScope = new RideScopeImpl(new RideScopeImpl.Dependencies() {
             @Override
             public Profile profile() {
                 return null;
             }
         });
-        Truth.assertThat(rootScope).isNotNull();
+        Truth.assertThat(rideScope).isNotNull();
     }
 }

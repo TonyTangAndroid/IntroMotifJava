@@ -3,7 +3,7 @@ package intro.di.network;
 import intro.di.Profile;
 
 @motif.Scope
-public interface RootScope {
+public interface RideScope {
 
     //access method
     RideRequestService rideRequestService();
