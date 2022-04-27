@@ -10,6 +10,12 @@ public interface RideScope {
     //Will the code compile?
     TripScope tripScope();
 
+    //builder pattern
+
+    interface Builder {
+        RideScope  rideScope(Profile profile);
+    }
+
 
     //access method
     RideRequestService rideRequestService();
