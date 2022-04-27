@@ -1,6 +1,7 @@
 package intro.di.network;
 
 import intro.di.Profile;
+import motif.Expose;
 
 @motif.Scope
 public interface RideScope {
@@ -11,11 +12,11 @@ public interface RideScope {
     TripScope tripScope();
 
     //builder pattern
-
+    //This is helpful for any code reader instantly knows what is required to create the RideScope
     interface Builder {
-        RideScope  rideScope(Profile profile);
+        //Make the dynamic dependencies explicitly
+        RideScope  rideScope(@Expose Profile profile);
     }
-
 
     //access method
     RideRequestService rideRequestService();

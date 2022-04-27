@@ -4,12 +4,10 @@ import com.google.common.truth.Truth;
 
 import org.junit.Test;
 
-import intro.di.Profile;
-import intro.di.network.AuthenticationScope;
-import intro.di.network.AuthenticationScopeImpl;
+import intro.di.network.RootScope;
+import intro.di.network.RootScopeImpl;
 import intro.di.network.RideRequestService;
 import intro.di.network.RideScope;
-import intro.di.network.RideScopeImpl;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -20,10 +18,10 @@ public class ScopeTest {
 
     @Test
     public void authenticationScope() {
-        AuthenticationScope authenticationScope = new AuthenticationScopeImpl();
-        Truth.assertThat(authenticationScope).isNotNull();
+        RootScope rootScope = new RootScopeImpl();
+        Truth.assertThat(rootScope).isNotNull();
 
-        RideScope rideScope = authenticationScope.rideScope();
+        RideScope rideScope = rootScope.rideScope(rootScope.profile());
 
         RideRequestService rideRequestService = rideScope.rideRequestService();
 
