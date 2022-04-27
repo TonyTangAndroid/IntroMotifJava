@@ -19,16 +19,6 @@ import intro.di.network.RideScopeImpl;
 public class ScopeTest {
 
     @Test
-    public void rideScope() {
-        RideScope rideScope = new RideScopeImpl(new RideScopeImpl.Dependencies() {
-            @Override
-            public Profile profile() {
-                return null;
-            }
-        });
-        Truth.assertThat(rideScope).isNotNull();
-    }
-    @Test
     public void authenticationScope() {
         AuthenticationScope authenticationScope = new AuthenticationScopeImpl();
         Truth.assertThat(authenticationScope).isNotNull();

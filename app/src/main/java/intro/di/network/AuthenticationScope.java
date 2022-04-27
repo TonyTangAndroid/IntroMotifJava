@@ -19,7 +19,8 @@ public interface AuthenticationScope {
     @motif.Objects
     abstract class Objects {
         static Profile profile() {
-            return new Profile(UUID.randomUUID(), "123");
+
+            return new Profile(UUID.fromString("65221c38-3e45-4bf7-9f9f-b46c7a8e35e4"), "123");
         }
 
     }
