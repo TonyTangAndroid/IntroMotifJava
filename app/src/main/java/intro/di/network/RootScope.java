@@ -12,6 +12,8 @@ public interface RootScope {
     @motif.Objects
     abstract class Objects {
 
+        //factory method. ->  abstract factory method.
+        abstract NetworkClient networkClient();
 
         //motif factory method. --? dagger module provider.
         static RideRequestService service(Profile profile, NetworkClient networkClient) {

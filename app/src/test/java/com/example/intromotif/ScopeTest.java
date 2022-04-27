@@ -23,13 +23,6 @@ public class ScopeTest {
             public Profile profile() {
                 return null;
             }
-
-            @Override
-            public NetworkClient networkClient() {
-                return null;
-            }
-
-
         });
         Truth.assertThat(rootScope).isNotNull();
     }
