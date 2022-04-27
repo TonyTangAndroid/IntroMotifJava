@@ -29,13 +29,7 @@ public class ScopeTest {
     }
     @Test
     public void authenticationScope() {
-        AuthenticationScope authenticationScope
-                = new AuthenticationScopeImpl(new AuthenticationScopeImpl.Dependencies() {
-            @Override
-            public Profile profile() {
-                return null;
-            }
-        });
+        AuthenticationScope authenticationScope = new AuthenticationScopeImpl();
         Truth.assertThat(authenticationScope).isNotNull();
     }
 }
