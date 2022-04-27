@@ -4,8 +4,8 @@ import com.google.common.truth.Truth;
 
 import org.junit.Test;
 
-import intro.di.network.EmptyScope;
-import intro.di.network.EmptyScopeImpl;
+import intro.di.network.RootScope;
+import intro.di.network.RootScopeImpl;
 import intro.di.network.RideRequestService;
 
 /**
@@ -16,12 +16,12 @@ import intro.di.network.RideRequestService;
 public class ScopeTest {
     @Test
     public void addition_isCorrect() {
-        EmptyScope emptyScope = new EmptyScopeImpl(new EmptyScopeImpl.Dependencies() {
+        RootScope rootScope = new RootScopeImpl(new RootScopeImpl.Dependencies() {
             @Override
             public RideRequestService rideRequestService() {
                 return null;
             }
         });
-        Truth.assertThat(emptyScope).isNotNull();
+        Truth.assertThat(rootScope).isNotNull();
     }
 }

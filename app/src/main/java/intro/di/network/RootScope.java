@@ -1,7 +1,7 @@
 package intro.di.network;
 
 @motif.Scope
-public interface EmptyScope {
+public interface RootScope {
 
     //access method
     RideRequestService rideRequestService();
