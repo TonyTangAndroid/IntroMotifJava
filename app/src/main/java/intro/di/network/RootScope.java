@@ -10,7 +10,7 @@ public interface RootScope extends RideScope.Builder {
 
     Profile profile();
 
-
+    LoggedOutScope loggedOutScope();
 //    xxx
 
     @motif.Objects
