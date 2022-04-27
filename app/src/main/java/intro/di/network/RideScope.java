@@ -5,6 +5,12 @@ import intro.di.Profile;
 @motif.Scope
 public interface RideScope {
 
+
+    //add a new TripScope.
+    //Will the code compile?
+    TripScope tripScope();
+
+
     //access method
     RideRequestService rideRequestService();
 
