@@ -13,7 +13,9 @@ public interface RootScope {
     abstract class Objects {
 
         //factory method. ->  abstract factory method.
-        abstract NetworkClient networkClient();
+         NetworkClient networkClient(){
+            return new NetworkClient("url");
+        }
 
         //motif factory method. --? dagger module provider.
         static RideRequestService service(Profile profile, NetworkClient networkClient) {
