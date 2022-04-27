@@ -8,6 +8,7 @@ public class NetworkClient {
   //Of all di concept, we must identify the one and only one path.
 
   //if there are two constructors, you have to inject the desired one.
+  @Inject
   public NetworkClient() {
   }
 
