@@ -4,6 +4,8 @@ import com.google.common.truth.Truth;
 
 import org.junit.Test;
 
+import intro.di.Profile;
+import intro.di.network.NetworkClient;
 import intro.di.network.RootScope;
 import intro.di.network.RootScopeImpl;
 import intro.di.network.RideRequestService;
@@ -18,9 +20,16 @@ public class ScopeTest {
     public void addition_isCorrect() {
         RootScope rootScope = new RootScopeImpl(new RootScopeImpl.Dependencies() {
             @Override
-            public RideRequestService rideRequestService() {
+            public Profile profile() {
                 return null;
             }
+
+            @Override
+            public NetworkClient networkClient() {
+                return null;
+            }
+
+
         });
         Truth.assertThat(rootScope).isNotNull();
     }
