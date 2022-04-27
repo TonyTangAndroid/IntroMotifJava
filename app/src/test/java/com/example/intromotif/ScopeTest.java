@@ -23,8 +23,7 @@ public class ScopeTest {
         AuthenticationScope authenticationScope = new AuthenticationScopeImpl();
         Truth.assertThat(authenticationScope).isNotNull();
 
-        Profile profile = authenticationScope.profile();
-        RideScope rideScope = authenticationScope.rideScope(profile);
+        RideScope rideScope = authenticationScope.rideScope();
 
         RideRequestService rideRequestService = rideScope.rideRequestService();
 
