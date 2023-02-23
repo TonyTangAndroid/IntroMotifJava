@@ -3,6 +3,7 @@ package intro.di;
 import intro.di.network.AuthService;
 import intro.di.network.AuthServiceImpl;
 import intro.di.network.NetworkClient;
+import motif.DoNotCache;
 
 /**
  * Having a empty scope is a great start.
@@ -18,6 +19,7 @@ public interface RootScope {
   @motif.Objects
   abstract class Objects{
     //1,  factory method.
+    @DoNotCache
      AuthService authService(NetworkClient networkClient){
       return new AuthServiceImpl(networkClient);
     }
