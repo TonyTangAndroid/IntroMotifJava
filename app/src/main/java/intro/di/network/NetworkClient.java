@@ -9,10 +9,6 @@ public class NetworkClient {
 
   }
 
-  @Inject
-  public NetworkClient(String serverUrl) {
-
-  }
 
   public String newCall(String url) {
     return String.format("%s is ok", url);
