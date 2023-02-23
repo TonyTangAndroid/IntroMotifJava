@@ -1,6 +1,8 @@
 package intro.di;
 
 import intro.di.network.AuthService;
+import intro.di.network.AuthServiceImpl;
+import intro.di.network.NetworkClient;
 
 /**
  * Having a empty scope is a great start.
@@ -16,8 +18,9 @@ public interface RootScope {
   @motif.Objects
   abstract class Objects{
     //1, factory method.
-    static AuthService authService(){
-      throw new RuntimeException();
+    static AuthService authService(NetworkClient networkClient){
+      return new AuthServiceImpl(networkClient);
     }
+
   }
 }
