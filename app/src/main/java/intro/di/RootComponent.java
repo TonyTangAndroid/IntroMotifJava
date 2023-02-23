@@ -7,7 +7,7 @@ import intro.di.network.NetworkClient;
 import intro.di.network.RideRequestService;
 import intro.di.network.RideRequestServiceImpl;
 
-public class AuthComponent {
+public class RootComponent {
 
   private NetworkClient networkClient;
   private AuthService authService;
