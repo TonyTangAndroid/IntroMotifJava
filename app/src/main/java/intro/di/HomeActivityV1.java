@@ -26,53 +26,29 @@ class HomeActivityV1 {
    * Login the user.
    */
   void login() {
-    AuthService authService = createAuthServiceIfNeeded();
+    AuthService authService = new AuthComponent().createAuthServiceIfNeeded();
     profile = authService.login("eric.liu@uber.com", "xxxx");
   }
 
-  //1, a lot of boiler plate code.
-  //2, not reusable.
-  //3, race condition.
-  private AuthService createAuthServiceIfNeeded() {
-    if (authService == null) {
-      NetworkClient networkClient = createNetworkClientIfNeeded();
-      authService = new AuthServiceImpl(networkClient);
-    }
-    return authService;
-  }
 
-  private NetworkClient createNetworkClientIfNeeded() {
-    if (networkClient == null) {
-      networkClient = new NetworkClient();
-    }
-    return networkClient;
-  }
 
   /**
    * Request a ride.
    */
   void requestRide() {
     if (profile != null) {
-      RideRequestService rideRequestService = createRideRequestServiceIfNeeded();
+      RideRequestService rideRequestService = new AuthComponent().createRideRequestServiceIfNeeded(profile);
       rideRequestService.requestRide();
     }
   }
 
-  @NonNull
-  private RideRequestService createRideRequestServiceIfNeeded() {
-    if (rideRequestService == null) {
-      NetworkClient networkClient = createNetworkClientIfNeeded();
-      rideRequestService = new RideRequestServiceImpl(profile, networkClient);
-    }
-    return rideRequestService;
-  }
 
 
   /**
    * log the user.
    */
   void logout() {
-    AuthService authService = createAuthServiceIfNeeded();
+    AuthService authService =new AuthComponent().createAuthServiceIfNeeded();
     authService.logout("eric.liu@uber.com");
     profile = null;
   }
