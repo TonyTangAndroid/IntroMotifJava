@@ -1,5 +1,7 @@
 package intro.di;
 
+import intro.di.network.AuthService;
+
 /**
  * Having a empty scope is a great start.
  * It means your code compiles
@@ -8,4 +10,5 @@ package intro.di;
 @motif.Scope
 public interface RootScope {
 
+  AuthService authService();
 }
