@@ -11,7 +11,12 @@ import motif.Expose;
 @motif.Scope
 public interface RootScope {
 
-  LoggedInScope loggedInScope();
+  /**
+   *
+   * @param profile dynamic dependencies.
+   * @return LoggedInScope
+   */
+  LoggedInScope loggedInScope(Profile profile);
 
   LoggedOutScope loggedOutScope();
 
