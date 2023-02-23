@@ -9,14 +9,8 @@ import motif.Expose;
  * Having a empty scope is a great start. It means your code compiles It means motif setup works.
  */
 @motif.Scope
-public interface RootScope {
+public interface RootScope extends LoggedInScope.Builder{
 
-  /**
-   *
-   * @param profile dynamic dependencies.
-   * @return LoggedInScope
-   */
-  LoggedInScope loggedInScope(Profile profile);
 
   LoggedOutScope loggedOutScope();
 

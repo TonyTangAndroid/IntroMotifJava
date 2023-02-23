@@ -9,6 +9,15 @@ public interface LoggedInScope {
 
   RideRequestService rideRequestService();
 
+  /**
+   * Add the builder pattern makes the contract between parent and children more explicit.
+   */
+  interface Builder {
+
+    LoggedInScope loggedInScope(Profile profile);
+
+  }
+
   @motif.Objects
   abstract class Objects {
 
