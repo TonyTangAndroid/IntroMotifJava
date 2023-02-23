@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 public class NetworkClient {
 
+  @Inject
   public NetworkClient() {
 
   }
