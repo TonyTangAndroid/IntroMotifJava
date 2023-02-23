@@ -3,23 +3,27 @@ package intro.di;
 import intro.di.network.AuthService;
 import intro.di.network.AuthServiceImpl;
 import intro.di.network.NetworkClient;
-import motif.DoNotCache;
+import motif.Expose;
 
 /**
- * Having a empty scope is a great start.
- * It means your code compiles
- * It means motif setup works.
+ * Having a empty scope is a great start. It means your code compiles It means motif setup works.
  */
 @motif.Scope
 public interface RootScope {
+
+  LoggedInScope loggedInScope();
+
+  LoggedOutScope loggedOutScope();
 
   //2 access method.
   AuthService authService();
 
   @motif.Objects
-  abstract class Objects{
+  abstract class Objects {
+
     //1,  factory method.
-     AuthService authService(NetworkClient networkClient){
+    @Expose
+    AuthService authService(NetworkClient networkClient) {
       return new AuthServiceImpl(networkClient);
     }
 
