@@ -20,7 +20,11 @@ public class ExampleUnitTest {
   public void addition_isCorrect() {
     RootScope rootScope = new RootScopeImpl();
     assertThat(rootScope).isNotNull();
-    AuthService authService = rootScope.authService();
-    assertThat(authService).isNotNull();
+    AuthService authService1 = rootScope.authService();
+    AuthService authService2 = rootScope.authService();
+
+    assertThat(authService1 == authService2).isTrue();
+    assertThat(authService1).isEqualTo(authService2);
+
   }
 }
