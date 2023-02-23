@@ -27,4 +27,15 @@ public class ExampleUnitTest {
     assertThat(authService1).isEqualTo(authService2);
 
   }
+
+  @Test
+  public void addition_isCorrectx() {
+    RootScope rootScope1 = new RootScopeImpl();
+    RootScope rootScope2 = new RootScopeImpl();
+    AuthService authService1 = rootScope1.authService();
+    AuthService authService2 = rootScope2.authService();
+
+    assertThat(authService1 == authService2).isFalse();
+
+  }
 }
