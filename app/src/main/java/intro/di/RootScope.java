@@ -17,11 +17,13 @@ public interface RootScope {
 
   @motif.Objects
   abstract class Objects{
-    //1, factory method.
-    static AuthService authService(NetworkClient networkClient){
+    //1,  factory method.
+     AuthService authService(NetworkClient networkClient){
       return new AuthServiceImpl(networkClient);
     }
 
+    //3, abstract factory method.
+    // it will use its default constructor to create the instance.
     abstract NetworkClient networkClient();
   }
 }
