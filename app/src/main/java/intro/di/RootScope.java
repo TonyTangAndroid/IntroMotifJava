@@ -19,7 +19,6 @@ public interface RootScope {
   @motif.Objects
   abstract class Objects{
     //1,  factory method.
-    @DoNotCache
      AuthService authService(NetworkClient networkClient){
       return new AuthServiceImpl(networkClient);
     }
