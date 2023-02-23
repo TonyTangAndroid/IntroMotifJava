@@ -30,6 +30,9 @@ class HomeActivityV1 {
     profile = authService.login("eric.liu@uber.com", "xxxx");
   }
 
+  //1, a lot of boiler plate code.
+  //2, not reusable.
+  //3, race condition.
   private AuthService createAuthServiceIfNeeded() {
     if (authService == null) {
       NetworkClient networkClient = createNetworkClientIfNeeded();
