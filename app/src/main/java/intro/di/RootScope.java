@@ -34,6 +34,7 @@ public interface RootScope {
 
     //3, abstract factory method.
     // it will use its default constructor to create the instance.
+    @Expose
     abstract NetworkClient networkClient();
   }
 }
