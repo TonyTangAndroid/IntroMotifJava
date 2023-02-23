@@ -10,5 +10,13 @@ import intro.di.network.AuthService;
 @motif.Scope
 public interface RootScope {
 
+  //expose
   AuthService authService();
+
+  @motif.Objects
+  abstract class Objects{
+    static AuthService authService(){
+      throw new RuntimeException();
+    }
+  }
 }
