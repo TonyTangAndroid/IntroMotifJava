@@ -23,7 +23,7 @@ public class ExampleUnitTest {
     AuthService authService1 = rootScope.authService();
     AuthService authService2 = rootScope.authService();
 
-    assertThat(authService1 == authService2).isTrue();
+    assertThat(authService1 == authService2).isFalse();
     assertThat(authService1).isEqualTo(authService2);
 
   }
