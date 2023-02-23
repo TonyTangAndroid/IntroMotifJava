@@ -22,5 +22,6 @@ public interface RootScope {
       return new AuthServiceImpl(networkClient);
     }
 
+    abstract NetworkClient networkClient();
   }
 }
